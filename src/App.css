@@ -1,0 +1,19 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+.tab{
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	height: 53px;
+}
+.tab-list{
+	width: 20%;
+	height: 100%;
+	float: left;
+	line-height: 53px;
+	text-align: center;
+	background-color: #fff;
+}
