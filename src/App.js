@@ -6,34 +6,41 @@ import One from './page/one'
 import Tow from './page/tow'
 import Four from './page/four'
 import Three from './page/three'
+import Five from './page/five'
 
 function App() {
   return (
     <div className="App">
 		<HashRouter basename='/www'>
-		<div className="center"> 
-			<Switch> 
-			<Route exact path="/">
-				<One/>
+			<Switch>
+			<Route exact path={'/'|'/one'}>
+				<div className="center"> 
+					<Route exact path="/">
+						<One/>
+					</Route>
+					<Route exact path="/one/tow">
+						<Tow/>
+					</Route>
+					<Route exact path="/one/three">
+						<Three/>
+					</Route>
+					<Route exact path="/one/four">
+						<Four/>
+					</Route>
+			
+				</div>	
+				<div className="tab">
+					<div className="tab-list"><NavLink style={{color:'#333',textDecoration:'none',backgroundColor:'#fff'}} to={{pathname:'/'}}>首页</NavLink></div>
+					<div className="tab-list"><Link style={{color:'#333',textDecoration:'none'}} to={{pathname:'/one/tow'}}>礼账</Link></div>
+					<div className="tab-list"></div>
+					<div className="tab-list"><Link style={{color:'#333',textDecoration:'none'}} to={{pathname:'/one/three'}}>理事</Link></div>
+					<div className="tab-list"><Link style={{color:'#333',textDecoration:'none'}} to={{pathname:'/one/four'}}>我的</Link></div>
+				</div>
 			</Route>
-			<Route exact path="/tow">
-				<Tow/>
-			</Route>
-			<Route exact path="/three">
-				<Three/>
-			</Route>
-			<Route exact path="/four">
-				<Four/>
+			<Route exact path="/five">
+				<Five/>
 			</Route>
 			</Switch>
-		</div>
-		<div className="tab">
-			<div className="tab-list"><Link style={{color:'#333',textDecoration:'none'}} to={{pathname:'/'}}>首页</Link></div>
-			<div className="tab-list"><Link style={{color:'#333',textDecoration:'none'}} to={{pathname:'/tow'}}>礼账</Link></div>
-			<div className="tab-list"></div>
-			<div className="tab-list"><Link style={{color:'#333',textDecoration:'none'}} to={{pathname:'/three'}}>理事</Link></div>
-			<div className="tab-list"><Link style={{color:'#333',textDecoration:'none'}} to={{pathname:'/four'}}>我的</Link></div>
-		</div>
 			</HashRouter>
     </div>
   );
