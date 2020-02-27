@@ -13,9 +13,9 @@ function App() {
     <div className="App">
 		<HashRouter basename='/www'>
 			<Switch>
-			<Route exact path={'/'|'/one'}>
+			<Route  path="/one">
 				<div className="center"> 
-					<Route exact path="/">
+					<Route exact path="/one">
 						<One/>
 					</Route>
 					<Route exact path="/one/tow">
@@ -30,7 +30,7 @@ function App() {
 			
 				</div>	
 				<div className="tab">
-					<div className="tab-list"><NavLink style={{color:'#333',textDecoration:'none',backgroundColor:'#fff'}} to={{pathname:'/'}}>首页</NavLink></div>
+					<div className="tab-list"><NavLink style={{color:'#333',textDecoration:'none',backgroundColor:'#fff'}} to={{pathname:'/one'}}>首页</NavLink></div>
 					<div className="tab-list"><Link style={{color:'#333',textDecoration:'none'}} to={{pathname:'/one/tow'}}>礼账</Link></div>
 					<div className="tab-list"></div>
 					<div className="tab-list"><Link style={{color:'#333',textDecoration:'none'}} to={{pathname:'/one/three'}}>理事</Link></div>
@@ -40,6 +40,7 @@ function App() {
 			<Route exact path="/five">
 				<Five/>
 			</Route>
+			<Redirect to="/one" />
 			</Switch>
 			</HashRouter>
     </div>

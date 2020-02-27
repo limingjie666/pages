@@ -1,0 +1,21 @@
+.information-box{
+	width: 100%;
+	position: fixed;	
+	bottom: 0;
+	background:rgba(215, 215, 215, 1);
+	padding-top: 10px;
+}
+.information-head{
+	height: 44px;
+	line-height: 44px;
+	text-align: center;
+	background-color: #fff;
+	margin-bottom: 2px;
+}
+.information-list{
+	height: 44px;
+	line-height: 44px;
+	margin-bottom: 1px;
+	background-color: #fff;
+	padding: 0 10px;
+}

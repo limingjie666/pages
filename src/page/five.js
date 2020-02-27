@@ -5,6 +5,8 @@ import Olist from '../assembly/olist.js'
 import aa from '../imge/u102.png'
 import bb from '../imge/u19.svg'
 import {store} from '../store'
+import Time from '../assembly/time.js'
+import Information from '../assembly/information.js'
 
 class Five extends React.Component{
 	constructor(props){
@@ -14,18 +16,20 @@ class Five extends React.Component{
 			val:'￥ 0.00',
 			val1:'请输入备注信息，最多可输入100字。如“孩子满月，请亲戚吃饭，共收礼8000元”。',
 			val2:'2016.06.27',
-			val3:'选择收礼类型'
+			val3:'选择收礼类型',
+			time_type:false,
+			information_type:false
 	    }
-		this.onChang=this.onChang.bind(this);
 		this.handlerChange=this.handlerChange.bind(this);
-	}
-	onChang(al){
-		console.log(al)
+		this.onchangs=this.onchangs.bind(this);
 	}
 	handlerChange(ev){
 		this.setState({
 			[ev.target.name]: ev.target.name=='val'?(ev.target.value.length>2?ev.target.value:'￥ '):ev.target.value
 		})
+	}
+	onchangs(al){
+		this.setState({information_type:al})
 	}
 	render(){
 	  return (
@@ -49,7 +53,7 @@ class Five extends React.Component{
 				</div>
 				<span>{this.state.val3}</span>
 			</div>
-			<div style={{height:'44px',backgroundColor:'rgb(215, 215, 215)',lineHeight:'44px'}}>
+			<div onClick={()=>{this.setState({information_type:true})}} style={{height:'44px',backgroundColor:'rgb(215, 215, 215)',lineHeight:'44px'}}>
 				<p style={{textAlign:'center'}}>
 					<img src={bb} style={{width:'24px',marginBottom:'-5px',marginRight:'5px'}}/>
 					<span>收礼人</span>
@@ -58,6 +62,9 @@ class Five extends React.Component{
 			<div style={{width:'100%',height:'44px',lineHeight:'44px',position:'fixed',bottom:'0',color:'#fff',textAlign:'center',backgroundColor:'rgb(22, 155, 213)'}}>
 				提交
 			</div>
+			{this.state.time_type?<Time/>:''}
+			{this.state.information_type?<Information onChange={this.onchangs}/>:''}
+			
 		</div>
 		);
 	}

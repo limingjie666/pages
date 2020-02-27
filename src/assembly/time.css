@@ -1,0 +1,30 @@
+.time-box{
+	width: 100%;
+	position: fixed;	
+	bottom: 0;
+	background:rgba(215, 215, 215, 1);
+	padding-top: 10px;
+}
+.time-head{
+	height: 44px;
+	line-height: 44px;
+	text-align: center;
+	background-color: #fff;
+	margin-bottom: 2px;
+}
+.time-list{
+	height: 44px;
+	line-height: 44px;
+	background-color: #fff;
+	margin-bottom: 2px;
+	color: #999;
+}
+.time-list-div{
+	width: 33.33%;
+	height: 100%;
+	float: left;
+	text-align: center;
+}
+.time-active{
+	color: #333;
+}
