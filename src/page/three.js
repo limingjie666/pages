@@ -22,7 +22,7 @@ class Tow extends React.Component{
 		})
 	  return (
 		<div className="tow">
-			<Heads title={['待参加','已参加']} onChang={this.onChang}/>
+			<Heads path="/one/three" title={['待参加','已参加']} onChang={this.onChang}/>
 			{olistDiv}
 		</div>
 		);

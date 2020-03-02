@@ -4,6 +4,8 @@ import Heads from '../assembly/heads.js'
 import Olist from '../assembly/olist.js'
 import aa from '../imge/u102.png'
 import bb from '../imge/u19.svg'
+import cc from '../imge/u381.svg'
+import dd from '../imge/u380.svg'
 import {store} from '../store'
 import Time from '../assembly/time.js'
 import Information from '../assembly/information.js'
@@ -18,10 +20,30 @@ class Five extends React.Component{
 			val2:'2016.06.27',
 			val3:'选择收礼类型',
 			time_type:false,
-			information_type:false
+			information_type:false,
+			index:'收',
+			list:[{
+				relationship:'亲',
+				name:'李华刚',
+				money:'500'
+			}]
 	    }
+		this.unSubscribe = null;
 		this.handlerChange=this.handlerChange.bind(this);
 		this.onchangs=this.onchangs.bind(this);
+		this.onclick=this.onclick.bind(this);
+		this.submission=this.submission.bind(this);
+		this.onChang=this.onChang.bind(this);
+	}
+	componentDidMount(){
+	    this.unSubscribe = store.subscribe(()=>{
+	        this.setState({
+	            ...store.getState()
+	        })
+	    })
+	}
+	componentWillUnmount(){
+	    this.unSubscribe();
 	}
 	handlerChange(ev){
 		this.setState({
@@ -31,10 +53,47 @@ class Five extends React.Component{
 	onchangs(al){
 		this.setState({information_type:al})
 	}
+	onclick(al){
+		var list=this.state.list
+		list.push({relationship:al.val1==='亲属'||al.val1==='朋友'?al.val1.substr(0,1):al.val1.substr(1,1) ,name:al.val2,money:al.val3,type:{on:this.state.index}})
+	}
+	submission(){
+		this.state.list.map((time,index)=>{
+			this.state.account.push({
+				img:aa,
+				xm:'类目名称',
+				mar:time.money,
+				type:{
+					on:this.state.index
+				},
+				name:time.name,
+				coun:'10',
+				time:'2016.5.21',
+				relationship:time.relationship
+			})
+		})
+		
+		this.state.list=[]
+		store.dispatch({type:'setname',name:'one'})
+	}
+	onChang(al){
+		this.setState({index:al===0?'收':'送'})
+	}
 	render(){
+		var olistDiiv=this.state.list.map((time,index)=>{
+			return (<div key={index} style={{height:'44px',lineHeight:'44px',padding:'0 5px'}}>
+				<span style={{display:'block',width:'24px',height:'24px',lineHeight:'24px',float:'left',fontSize:'18px',color:'#fff',backgroundColor:'rgba(215, 215, 215, 1)',textAlign:'center',marginTop:'10px',marginRight:'10px'}}>{time.relationship}</span>
+				<span style={{marginRight:'10px'}}>{time.name}</span>
+				<span style={{color:'#008000'}}>{time.money}</span>
+				<div style={{height:'100%',lineHeight:'44px',float:'right'}}>
+					<img style={{width:'19px',marginLeft:'10px'}} src={cc}/>
+					<img style={{width:'19px',marginLeft:'10px'}} src={dd}/>
+				</div>
+			</div>)
+		})
 	  return (
 		<div className="tow" style={{position:'relative'}}>
-			<Heads title={['收礼','送礼']} onChang={this.onChang}/>
+			<Heads path="/one/tow" title={['收礼','送礼']} onChang={this.onChang}/>
 			<div style={{height:'44px',backgroundColor:'#fff',marginBottom:'2px',fontSize:'28px',color:'#199ED8',padding:'0 5px',position:'relative'}}>
 				<input name="val" onChange={this.handlerChange} style={{position:'absolute',left:'5px',top:'0',width:'100%',height:'100%',border:'none',outline:'none',lineHeight:'44px',fontWeight: '700'}} type="text" value={this.state.val} />
 			</div>
@@ -59,11 +118,14 @@ class Five extends React.Component{
 					<span>收礼人</span>
 				</p>
 			</div>
-			<div style={{width:'100%',height:'44px',lineHeight:'44px',position:'fixed',bottom:'0',color:'#fff',textAlign:'center',backgroundColor:'rgb(22, 155, 213)'}}>
+			
+			{olistDiiv}
+			
+			<div onClick={this.submission} style={{width:'100%',height:'44px',lineHeight:'44px',position:'fixed',bottom:'0',color:'#fff',textAlign:'center',backgroundColor:'rgb(22, 155, 213)'}}>
 				提交
 			</div>
 			{this.state.time_type?<Time/>:''}
-			{this.state.information_type?<Information onChange={this.onchangs}/>:''}
+			{this.state.information_type?<Information onclick={this.onclick} onChange={this.onchangs}/>:''}
 			
 		</div>
 		);
