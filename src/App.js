@@ -7,6 +7,7 @@ import Tow from './page/tow'
 import Four from './page/four'
 import Three from './page/three'
 import Five from './page/five'
+import Six from './page/six'
 
 function App() {
   return (
@@ -39,6 +40,9 @@ function App() {
 			</Route>
 			<Route exact path="/five">
 				<Five/>
+			</Route>
+			<Route exact path="/six">
+				<Six/>
 			</Route>
 			<Redirect to="/one" />
 			</Switch>

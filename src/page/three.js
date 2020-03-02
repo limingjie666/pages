@@ -10,19 +10,20 @@ class Tow extends React.Component{
 	    super(props);
 	    this.state={
 			...store.getState(),
+			index:'待'
 	    }
 		this.onChang=this.onChang.bind(this);
 	}
 	onChang(al){
-		console.log(al)
+		this.setState({index:al===0?'待':'已'})
 	}
 	render(){
 		var olistDiv=this.state.matter.map((time,index)=>{
-			return (<Olist key={index} json={time}/>)
+			return (time.mar.slice(0,1)===this.state.index?<Olist key={index} json={time}/>:'')
 		})
 	  return (
 		<div className="tow">
-			<Heads path="/one/three" title={['待参加','已参加']} onChang={this.onChang}/>
+			<Heads path="/one/three" topath="/six" title={['待参加','已参加']} onChang={this.onChang}/>
 			{olistDiv}
 		</div>
 		);
