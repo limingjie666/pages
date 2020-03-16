@@ -20,8 +20,8 @@ class Heads extends React.Component{
 				{this.props.title?<div style={{width:'204px',height:'39px',position: 'absolute',top:'50%',left:'50%',marginLeft:'-102px',marginTop:'-19px'}}>
 					<div onClick={()=>{this.setState({index:0});this.props.onChang(0)}} className={this.state.index==0?'active':''} style={{width:'50%',float:'left',textAlign: 'center',lineHeight:' 39px',fontSize: '16px',border:'1px rgba(25, 158, 216, 1) solid',boxSizing:'border-box'}}>{this.props.title[0]}</div>
 					<div onClick={()=>{this.setState({index:1});this.props.onChang(1)}} className={this.state.index==1?'active':''} style={{width:'50%',float:'right',textAlign: 'center',lineHeight:' 39px',fontSize: '16px',border:'1px rgba(25, 158, 216, 1) solid',boxSizing:'border-box'}}>{this.props.title[1]}</div>
-				</div>:'记礼事'}
-				<div style={{float:'right'}}><Link to={{pathname:this.props.topath}}><img style={{width:'24px'}} src={cc}/></Link></div>
+				</div>:this.props.titles}
+				<div style={{float:'right',display:this.props.topath?'block':'none'}}><Link to={{pathname:this.props.topath}}><img style={{width:'24px'}} src={cc}/></Link></div>
 			</div>
 		);
 	}

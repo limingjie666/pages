@@ -1,6 +1,9 @@
-import {createStore} from 'redux'
+import {createStore,applyMiddleware} from 'redux'
+import reduxThunk from 'redux-thunk';
+import reduxpromise from 'redux-promise';
 import aa from './imge/u102.png'
-var reducer = function(state = {
+
+var json= {
 	account:[
 		{
 			img:aa,
@@ -48,20 +51,29 @@ var reducer = function(state = {
 			coun:'',
 			time:'2016.5.21'
 		}
-	]
-  },action){
+	],
+	rank:[]
+  }
+  
+
+var selectFoods = function(state =json,action){
     switch (action.type) {
-      case 'setname':
-        return {...state,username:action.name}
-      default:
-        return state
+        case 'ADD':
+            return [...state,action.food] 
+        case 'JIAN':
+            var arr = [];
+            state.forEach((el,i)=>{
+              if(action.index != i ){
+                arr.push(el)
+              }
+            })
+            console.log(arr);
+            return arr;
+        default:
+            return state
     }
   }
-
-var store = createStore(reducer);
-
-store.subscribe(()=>{
-  console.log(store.getState());
-})
+		
+var store = createStore(selectFoods,applyMiddleware(reduxThunk,reduxpromise));
 
 export {store};

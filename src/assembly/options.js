@@ -12,7 +12,7 @@ class Options extends React.Component{
 	}
 	render(){
 	  return (
-			<div style={{height:'44px',backgroundColor:"#fff",marginBottom:'5px',lineHeight:'44px',padding:'0 10px'}}>
+			<div style={{height:'44px',backgroundColor:"#fff",marginBottom:'5px',lineHeight:'44px',padding:'0 10px',color:'#333'}}>
 				<div style={{float:'left'}}>
 					<div style={{float:'left',lineHeight: 'normal',marginTop:'13px',marginRight:'10px'}}><img style={{width:'19px'}} src={this.state.imge}/></div>
 					<span>{this.state.title}</span>

@@ -86,7 +86,7 @@ class Six extends React.Component{
 		})
 	  return (
 		<div className="tow" style={{position:'relative'}}>
-			<Heads path={"/one/three"} onChang={this.onChang}/>
+			<Heads path={"/one/three"} titles="记礼事" onChang={this.onChang}/>
 			<div style={{height:'44px',backgroundColor:'#fff',marginBottom:'2px',fontSize:'28px',color:'#199ED8',padding:'0 5px',position:'relative'}}>
 				<input name="val" onChange={this.handlerChange} style={{position:'absolute',left:'5px',top:'0',width:'100%',height:'100%',border:'none',outline:'none',lineHeight:'44px',fontWeight: '700'}} type="text" value={this.state.val} />
 			</div>

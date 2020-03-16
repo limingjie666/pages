@@ -1,4 +1,5 @@
 import React from 'react';
+import {HashRouter,Route,Link,NavLink,Redirect,Switch } from 'react-router-dom'
 import './four.css';
 import Options from '../assembly/options'
 import aa from '../imge/u895.svg'
@@ -26,13 +27,13 @@ class Four extends React.Component{
 					<div style={{float:'left',lineHeight: 'normal',marginTop:'10px',marginRight:'10px'}}><img src={bb}/></div>
 					<span>调用QQ、微信昵称</span>
 				</div>
-				<div style={{float:'right'}}><img style={{width:'12px'}} src={dd}/></div>
+				<Link to={{pathname:'/pdata'}}><div style={{float:'right'}}><img style={{width:'12px'}} src={dd}/></div></Link>
 			</div>
-			<Options imge={cc} title="设置" />
+			<Link to={{pathname:'/setup'}}><Options imge={cc} title="设置" /></Link>
 			<Options imge={cc} title="反馈" />
-			<Options imge={cc} title="帮助" />
-			<Options imge={cc} title="关于" />
-			<Options imge={cc} title="分享" />
+			<Link to={{pathname:'/help'}}><Options imge={cc} title="帮助" /></Link>
+			<Link to={{pathname:'/share'}}><Options imge={cc} title="分享" /></Link>
+			<Link to={{pathname:'/about'}}><Options imge={cc} title="关于" /></Link>
 		</div>
 		);
 	}

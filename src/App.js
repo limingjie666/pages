@@ -8,13 +8,53 @@ import Four from './page/four'
 import Three from './page/three'
 import Five from './page/five'
 import Six from './page/six'
+import Upone from './page/upone'
+import Uptow from './page/uptow'
+import Upthree from './page/upthree'
+import Upfour from './page/upfour'
+import Ranking from './page/ranking'
+import Pdata from './page/pdata'
+import Setup from './page/setup'
+import Help from './page/help'
+import Share from './page/share'
+import About from './page/about'
 
 function App() {
   return (
     <div className="App">
 		<HashRouter basename='/www'>
 			<Switch>
-			<Route  path="/one">
+			<Route exact path="/">
+				<Upone/>
+			</Route>
+			<Route exact path="/uptow">
+				<Uptow/>
+			</Route>
+			<Route exact path="/upthree">
+				<Upthree/>
+			</Route>
+			<Route exact path="/upfour">
+				<Upfour/>
+			</Route>
+			<Route exact path="/ranking">
+				<Ranking/>
+			</Route>
+			<Route exact path="/pdata">
+				<Pdata/>
+			</Route>
+			<Route exact path="/setup">
+				<Setup/>
+			</Route>
+			<Route exact path="/help">
+				<Help/>
+			</Route>
+			<Route exact path="/share">
+				<Share/>
+			</Route>
+			<Route exact path="/about">
+				<About/>
+			</Route>
+			<Route  path="/one" >
 				<div className="center"> 
 					<Route exact path="/one">
 						<One/>
@@ -28,7 +68,6 @@ function App() {
 					<Route exact path="/one/four">
 						<Four/>
 					</Route>
-			
 				</div>	
 				<div className="tab">
 					<div className="tab-list"><NavLink style={{color:'#333',textDecoration:'none',backgroundColor:'#fff'}} to={{pathname:'/one'}}>首页</NavLink></div>
